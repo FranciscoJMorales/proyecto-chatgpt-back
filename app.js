@@ -30,10 +30,10 @@ const chat = async (req, res, next) => {
             baseURL: 'https://api.openai.com/v1/completions',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer su apikey`
+                'Authorization': `Bearer ${process.env.TOKEN}`
             },
             data: {
-                "model": "su modelo",
+                "model": process.env.MODEL,
                 "prompt": req.body.prompt,
                 "temperature": 0.1,
                 "max_tokens": 1500,
