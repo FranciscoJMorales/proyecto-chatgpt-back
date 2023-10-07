@@ -51,7 +51,7 @@ const chat = async (req, res, next) => {
             const data = result.data
             const respuesta = data.choices[0].text;
             // let texto_limpio = respuesta.replace(/\n/g, '').replace(/#/g, '');
-            let texto_limpio = respuesta.replace(/#/g, '');
+            let texto_limpio = respuesta.substring(2).replace(/#/g, '');
             console.log('RESPUESTA - ', texto_limpio);
             response = {
                 error: false,
