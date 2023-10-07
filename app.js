@@ -36,11 +36,11 @@ const chat = async (req, res, next) => {
                 "model": process.env.MODEL,
                 "prompt": req.body.prompt,
                 "temperature": 0.1,
-                "max_tokens": 1500,
+                "max_tokens": 256,
                 "top_p": 1,
                 "frequency_penalty": 0,
                 "presence_penalty": 0,
-                "stop": ["_END"]
+                "stop": ["END"]
             }
         }
 
@@ -50,7 +50,8 @@ const chat = async (req, res, next) => {
         if (result.data) {
             const data = result.data
             const respuesta = data.choices[0].text;
-            let texto_limpio = respuesta.replace(/\n/g, '').replace(/#/g, '');
+            // let texto_limpio = respuesta.replace(/\n/g, '').replace(/#/g, '');
+            let texto_limpio = respuesta.replace(/#/g, '');
             console.log('RESPUESTA - ', texto_limpio);
             response = {
                 error: false,
